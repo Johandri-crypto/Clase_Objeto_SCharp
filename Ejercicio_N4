@@ -1,0 +1,48 @@
+using System;
+
+class Estudiante {
+    public string Matricula;
+    public string Nombre;
+    public int Edad;
+    public string Carrera;
+    
+    public Estudiante(string matricula, string nombre, int edad, string carrera) {
+        Matricula = matricula;
+        Nombre = nombre;
+        Edad = edad;
+        Carrera = carrera;
+    }
+    
+    public void MostrarInfo() {
+        Console.WriteLine("Matrícula: " + Matricula);
+        Console.WriteLine("Nombre: " + Nombre);
+        Console.WriteLine("Edad: " + Edad);
+        Console.WriteLine("Carrera: " + Carrera);
+    }
+}
+
+class Program {
+    static void Main() {
+        Estudiante[] estudiantes = new Estudiante[5];
+        
+        for (int i = 0; i < 5; i++) {
+            Console.WriteLine($"\nIngrese los datos del estudiante #{i+1}:");
+            Console.Write("Matrícula: ");
+            string matricula = Console.ReadLine();
+            Console.Write("Nombre: ");
+            string nombre = Console.ReadLine();
+            Console.Write("Edad: ");
+            int edad = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Carrera: ");
+            string carrera = Console.ReadLine();
+            
+            estudiantes[i] = new Estudiante(matricula, nombre, edad, carrera);
+        }
+        
+        Console.WriteLine("\nInformación de los estudiantes:");
+        foreach (Estudiante est in estudiantes) {
+            est.MostrarInfo();
+            Console.WriteLine();
+        }
+    }
+}
