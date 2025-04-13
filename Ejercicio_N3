@@ -1,0 +1,49 @@
+using System;
+
+class Articulo {
+    public string Nombre;
+    public double Precio;
+    public string Categoria;
+    
+    // Constructor
+    public Articulo(string nombre, double precio, string categoria) {
+        Nombre = nombre;
+        Precio = precio;
+        Categoria = categoria;
+    }
+    
+    // Método para mostrar información del artículo
+    public void MostrarInfo() {
+        Console.WriteLine("Nombre: " + Nombre);
+        Console.WriteLine("Precio: " + Precio);
+        Console.WriteLine("Categoría: " + Categoria);
+    }
+}
+
+class Program {
+    static void Main() {
+        Console.WriteLine("Ingrese los datos del primer artículo:");
+        Console.Write("Nombre: ");
+        string nombre1 = Console.ReadLine();
+        Console.Write("Precio: ");
+        double precio1 = Convert.ToDouble(Console.ReadLine());
+        Console.Write("Categoría: ");
+        string categoria1 = Console.ReadLine();
+        
+        Console.WriteLine("\nIngrese los datos del segundo artículo:");
+        Console.Write("Nombre: ");
+        string nombre2 = Console.ReadLine();
+        Console.Write("Precio: ");
+        double precio2 = Convert.ToDouble(Console.ReadLine());
+        Console.Write("Categoría: ");
+        string categoria2 = Console.ReadLine();
+        
+        Articulo art1 = new Articulo(nombre1, precio1, categoria1);
+        Articulo art2 = new Articulo(nombre2, precio2, categoria2);
+        
+        Console.WriteLine("\nInformación de los artículos:");
+        art1.MostrarInfo();
+        Console.WriteLine();
+        art2.MostrarInfo();
+    }
+}
