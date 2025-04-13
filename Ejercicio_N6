@@ -1,0 +1,98 @@
+using System;
+
+class Transporte {
+    public double CostoBase;
+    public double Tiempo;     // en minutos
+    public double Distancia;  // en km
+
+    public Transporte(double costoBase, double tiempo, double distancia) {
+        CostoBase = costoBase;
+        Tiempo = tiempo;
+        Distancia = distancia;
+    }
+    
+    // Método virtual para calcular el costo (puede sobrescribirse)
+    public virtual double CalcularBoleto() {
+        return CostoBase + (Tiempo * 0.5) + (Distancia * 0.2);
+    }
+}
+
+class Taxi : Transporte {
+    public string Destino;
+    public Taxi(double costoBase, double tiempo, double distancia, string destino)
+        : base(costoBase, tiempo, distancia) {
+        Destino = destino;
+    }
+    public override double CalcularBoleto() {
+        // Precio basado en la distancia y tiempo
+        return (Distancia * 1.5) + (Tiempo * 0.5);
+    }
+}
+
+class Metro : Transporte {
+    public string Compania;
+    public string Linea;
+    public Metro(double costoBase, double tiempo, double distancia, string compania, string linea)
+        : base(costoBase, tiempo, distancia) {
+        Compania = compania;
+        Linea = linea;
+    }
+    public override double CalcularBoleto() {
+        // Precio fijo para metro
+        return CostoBase;
+    }
+}
+
+class Teleferico : Transporte {
+    public string Compania;
+    public string Linea;
+    public Teleferico(double costoBase, double tiempo, double distancia, string compania, string linea)
+        : base(costoBase, tiempo, distancia) {
+        Compania = compania;
+        Linea = linea;
+    }
+    public override double CalcularBoleto() {
+        return CostoBase + (Tiempo * 0.3);
+    }
+}
+
+class BusUrbano : Transporte {
+    public string Corredor;
+    public BusUrbano(double costoBase, double tiempo, double distancia, string corredor)
+        : base(costoBase, tiempo, distancia) {
+        Corredor = corredor;
+    }
+    public override double CalcularBoleto() {
+        return CostoBase + (Tiempo * 0.4);
+    }
+}
+
+class BusInterurbano : Transporte {
+    public string Linea;
+    public string Compania;
+    public BusInterurbano(double costoBase, double tiempo, double distancia, string linea, string compania)
+        : base(costoBase, tiempo, distancia) {
+        Linea = linea;
+        Compania = compania;
+    }
+    public override double CalcularBoleto() {
+        return CostoBase + (Distancia * 0.8);
+    }
+}
+
+class Program {
+    static void Main() {
+        // Ejemplos de creación de objetos de diferentes tipos de transporte
+        Taxi taxi = new Taxi(0, 10, 5, "Centro");
+        Metro metro = new Metro(2.5, 0, 0, "MetroRD", "Línea 1");
+        Teleferico teleferico = new Teleferico(3.0, 5, 0, "TelefericoCorp", "Línea A");
+        BusUrbano busUrbano = new BusUrbano(1.0, 15, 0, "Corredor 5");
+        BusInterurbano busInterurbano = new BusInterurbano(2.0, 0, 20, "Línea Express", "CompaniaX");
+        
+        Console.WriteLine("Boleto Taxi: " + taxi.CalcularBoleto());
+        Console.WriteLine("Boleto Metro: " + metro.CalcularBoleto());
+        Console.WriteLine("Boleto Teleférico: " + teleferico.CalcularBoleto());
+        Console.WriteLine("Boleto Bus Urbano: " + busUrbano.CalcularBoleto());
+        Console.WriteLine("Boleto Bus Interurbano: " + busInterurbano.CalcularBoleto());
+    }
+}
