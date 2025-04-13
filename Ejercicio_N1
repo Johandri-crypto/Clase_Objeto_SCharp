@@ -1,0 +1,35 @@
+using System;
+
+class Dispositivo {
+    public string Tipo;
+    public string Color;
+    public string Marca;
+    
+    // Constructor
+    public Dispositivo(string tipo, string color, string marca) {
+        Tipo = tipo;
+        Color = color;
+        Marca = marca;
+    }
+    
+    // Método para mostrar la información del dispositivo
+    public void MostrarInfo() {
+        Console.WriteLine("Tipo: " + Tipo);
+        Console.WriteLine("Color: " + Color);
+        Console.WriteLine("Marca: " + Marca);
+    }
+    
+    // Método para simular que el dispositivo se enciende
+    public void Encender() {
+        Console.WriteLine("El dispositivo se está encendiendo...");
+    }
+}
+
+class Program {
+    static void Main() {
+        // Se instancia un objeto Dispositivo
+        Dispositivo d = new Dispositivo("Smartphone", "Negro", "Samsung");
+        d.MostrarInfo();
+        d.Encender();
+    }
+}
