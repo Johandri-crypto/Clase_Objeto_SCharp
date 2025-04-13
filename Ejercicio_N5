@@ -1,0 +1,42 @@
+using System;
+
+class Operacion {
+    public int Valor1;
+    public int Valor2;
+    
+    public Operacion(int v1, int v2) {
+        Valor1 = v1;
+        Valor2 = v2;
+    }
+    
+    // Método virtual que se sobrescribe
+    public virtual int Calcular() {
+        return 0;
+    }
+}
+
+class Suma : Operacion {
+    public Suma(int v1, int v2) : base(v1, v2) { }
+    
+    public override int Calcular() {
+        return Valor1 + Valor2;
+    }
+}
+
+class Resta : Operacion {
+    public Resta(int v1, int v2) : base(v1, v2) { }
+    
+    public override int Calcular() {
+        return Valor1 - Valor2;
+    }
+}
+
+class Program {
+    static void Main() {
+        Suma suma = new Suma(5, 3);
+        Resta resta = new Resta(10, 4);
+        
+        Console.WriteLine("Suma: " + suma.Calcular());
+        Console.WriteLine("Resta: " + resta.Calcular());
+    }
+}
