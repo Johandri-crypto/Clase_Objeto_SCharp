@@ -1,0 +1,42 @@
+using System;
+
+class Animal {
+    public string Nombre;
+    
+    // Constructor de la clase base
+    public Animal(string nombre) {
+        Nombre = nombre;
+    }
+    
+    // Método virtual para el sonido
+    public virtual void Sonido() {
+        Console.WriteLine("El animal hace un sonido.");
+    }
+}
+
+class Perro : Animal {
+    public Perro(string nombre) : base(nombre) { }
+    
+    // Sobrescribe el método Sonido
+    public override void Sonido() {
+        Console.WriteLine(Nombre + " dice: ¡Guau!");
+    }
+}
+
+class Gato : Animal {
+    public Gato(string nombre) : base(nombre) { }
+    
+    public override void Sonido() {
+        Console.WriteLine(Nombre + " dice: ¡Miau!");
+    }
+}
+
+class Program {
+    static void Main() {
+        Animal miPerro = new Perro("Firulais");
+        Animal miGato = new Gato("Pelusa");
+        
+        miPerro.Sonido();
+        miGato.Sonido();
+    }
+}
